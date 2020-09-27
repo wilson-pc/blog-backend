@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { PostCrudResolver } from 'src/prisma/generated';
+import { PostCrudResolver, PostRelationsResolver } from 'src/prisma/generated';
 import { PostResolver } from './post.resolver';
 
 @Module({
-  providers: [PostResolver, PostCrudResolver],
+  providers: [PostResolver, PostCrudResolver, PostRelationsResolver],
 })
 export class PostModule {}

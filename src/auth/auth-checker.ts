@@ -17,7 +17,7 @@ export const authChecker: AuthChecker<Context> = async ({
     try {
       const token = Authorization.replace('Bearer ', '');
       const verifiedToken = verify(token, 'secret-password') as Token;
-      console.log(verifiedToken);
+
       req.body.userId = verifiedToken.userId;
       return true;
     } catch {

@@ -658,6 +658,10 @@ input StringNullableFilter {
   startsWith: String
 }
 
+type Subscription {
+  publishEvent: Post!
+}
+
 """
 The javascript `Date` as integer. Type represents date and time as number of milliseconds from start of UNIX epoch.
 """

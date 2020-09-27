@@ -9,7 +9,15 @@ import {
   UpdatePostArgs,
 } from 'src/prisma/generated';
 import * as TypeGraphQL from 'type-graphql';
-import { Arg, Authorized, Resolver } from 'type-graphql';
+import {
+  Arg,
+  Authorized,
+  Publisher,
+  PubSub,
+  Resolver,
+  Root,
+  Subscription,
+} from 'type-graphql';
 
 @Resolver()
 export class PostResolver {
@@ -76,9 +84,22 @@ export class PostResolver {
     description: undefined,
   })
   async publishPost(
+    @PubSub('PUBLISH-EVENT') publish: Publisher<Post>,
     @TypeGraphQL.Ctx() { prisma }: Context,
     @Arg('id', { nullable: false }) id: string,
   ): Promise<Post | null> {
-    return prisma.post.update({ where: { id: id }, data: { published: true } });
+    let post = await prisma.post.update({
+      where: { id: id },
+      data: { published: true },
+      include: { categories: true, author: true },
+    });
+    await publish(post);
+    return post;
+  }
+
+  @Subscription({ topics: 'PUBLISH-EVENT' })
+  publishEvent(@Root() post: Post): Post {
+    // ...
+    return post;
   }
 }

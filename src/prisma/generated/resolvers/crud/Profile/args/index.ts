@@ -1,0 +1,9 @@
+export { AggregateProfileArgs } from "./AggregateProfileArgs";
+export { CreateProfileArgs } from "./CreateProfileArgs";
+export { DeleteManyProfileArgs } from "./DeleteManyProfileArgs";
+export { DeleteProfileArgs } from "./DeleteProfileArgs";
+export { FindManyProfileArgs } from "./FindManyProfileArgs";
+export { FindOneProfileArgs } from "./FindOneProfileArgs";
+export { UpdateManyProfileArgs } from "./UpdateManyProfileArgs";
+export { UpdateProfileArgs } from "./UpdateProfileArgs";
+export { UpsertProfileArgs } from "./UpsertProfileArgs";

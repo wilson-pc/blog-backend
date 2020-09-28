@@ -1,7 +1,6 @@
 export { CategoryRelationsResolver } from "./Category/CategoryRelationsResolver";
 export * from "./Category/args";
 export { CommentRelationsResolver } from "./Comment/CommentRelationsResolver";
-export * from "./Comment/args";
 export { PostRelationsResolver } from "./Post/PostRelationsResolver";
 export * from "./Post/args";
 export { ProfileRelationsResolver } from "./Profile/ProfileRelationsResolver";

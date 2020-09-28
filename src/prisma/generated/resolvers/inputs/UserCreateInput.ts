@@ -1,7 +1,7 @@
 import * as TypeGraphQL from "type-graphql";
 import GraphQLJSON from "graphql-type-json";
 import { JsonValue, InputJsonValue } from "@prisma/client";
-import { CommentCreateManyWithoutUsersInput } from "../inputs/CommentCreateManyWithoutUsersInput";
+import { CommentCreateManyWithoutUserInput } from "../inputs/CommentCreateManyWithoutUserInput";
 import { PostCreateManyWithoutAuthorInput } from "../inputs/PostCreateManyWithoutAuthorInput";
 import { ProfileCreateOneWithoutUserInput } from "../inputs/ProfileCreateOneWithoutUserInput";
 
@@ -34,11 +34,11 @@ export class UserCreateInput {
   })
   password!: string;
 
-  @TypeGraphQL.Field(_type => CommentCreateManyWithoutUsersInput, {
+  @TypeGraphQL.Field(_type => CommentCreateManyWithoutUserInput, {
     nullable: true,
     description: undefined
   })
-  comments?: CommentCreateManyWithoutUsersInput | undefined;
+  comments?: CommentCreateManyWithoutUserInput | undefined;
 
   @TypeGraphQL.Field(_type => PostCreateManyWithoutAuthorInput, {
     nullable: true,

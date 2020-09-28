@@ -1,30 +1,30 @@
 import * as TypeGraphQL from "type-graphql";
 import GraphQLJSON from "graphql-type-json";
 import { JsonValue, InputJsonValue } from "@prisma/client";
-import { CommentCreateWithoutUsersInput } from "../inputs/CommentCreateWithoutUsersInput";
-import { CommentUpdateWithoutUsersDataInput } from "../inputs/CommentUpdateWithoutUsersDataInput";
+import { CommentCreateWithoutPostInput } from "../inputs/CommentCreateWithoutPostInput";
+import { CommentUpdateWithoutPostDataInput } from "../inputs/CommentUpdateWithoutPostDataInput";
 import { CommentWhereUniqueInput } from "../inputs/CommentWhereUniqueInput";
 
 @TypeGraphQL.InputType({
   isAbstract: true,
   description: undefined,
 })
-export class CommentUpsertWithWhereUniqueWithoutUsersInput {
+export class CommentUpsertWithWhereUniqueWithoutPostInput {
   @TypeGraphQL.Field(_type => CommentWhereUniqueInput, {
     nullable: false,
     description: undefined
   })
   where!: CommentWhereUniqueInput;
 
-  @TypeGraphQL.Field(_type => CommentUpdateWithoutUsersDataInput, {
+  @TypeGraphQL.Field(_type => CommentUpdateWithoutPostDataInput, {
     nullable: false,
     description: undefined
   })
-  update!: CommentUpdateWithoutUsersDataInput;
+  update!: CommentUpdateWithoutPostDataInput;
 
-  @TypeGraphQL.Field(_type => CommentCreateWithoutUsersInput, {
+  @TypeGraphQL.Field(_type => CommentCreateWithoutPostInput, {
     nullable: false,
     description: undefined
   })
-  create!: CommentCreateWithoutUsersInput;
+  create!: CommentCreateWithoutPostInput;
 }

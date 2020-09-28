@@ -24,5 +24,17 @@ export class CommentOrderByInput {
     nullable: true,
     description: undefined
   })
+  createdAt?: typeof SortOrder[keyof typeof SortOrder] | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true,
+    description: undefined
+  })
   postId?: typeof SortOrder[keyof typeof SortOrder] | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true,
+    description: undefined
+  })
+  userId?: typeof SortOrder[keyof typeof SortOrder] | undefined;
 }

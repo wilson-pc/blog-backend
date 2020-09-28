@@ -3,7 +3,7 @@ import GraphQLJSON from "graphql-type-json";
 import { JsonValue, InputJsonValue } from "@prisma/client";
 import { BoolFieldUpdateOperationsInput } from "../inputs/BoolFieldUpdateOperationsInput";
 import { CategoryUpdateManyWithoutPostsInput } from "../inputs/CategoryUpdateManyWithoutPostsInput";
-import { CommentUpdateManyWithoutPostsInput } from "../inputs/CommentUpdateManyWithoutPostsInput";
+import { CommentUpdateManyWithoutPostInput } from "../inputs/CommentUpdateManyWithoutPostInput";
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 
@@ -48,9 +48,9 @@ export class PostUpdateWithoutAuthorDataInput {
   })
   categories?: CategoryUpdateManyWithoutPostsInput | undefined;
 
-  @TypeGraphQL.Field(_type => CommentUpdateManyWithoutPostsInput, {
+  @TypeGraphQL.Field(_type => CommentUpdateManyWithoutPostInput, {
     nullable: true,
     description: undefined
   })
-  comments?: CommentUpdateManyWithoutPostsInput | undefined;
+  comments?: CommentUpdateManyWithoutPostInput | undefined;
 }

@@ -8,16 +8,16 @@ import { UserWhereUniqueInput } from "../inputs/UserWhereUniqueInput";
   isAbstract: true,
   description: undefined,
 })
-export class UserCreateManyWithoutCommentsInput {
-  @TypeGraphQL.Field(_type => [UserCreateWithoutCommentsInput], {
+export class UserCreateOneWithoutCommentsInput {
+  @TypeGraphQL.Field(_type => UserCreateWithoutCommentsInput, {
     nullable: true,
     description: undefined
   })
-  create?: UserCreateWithoutCommentsInput[] | undefined;
+  create?: UserCreateWithoutCommentsInput | undefined;
 
-  @TypeGraphQL.Field(_type => [UserWhereUniqueInput], {
+  @TypeGraphQL.Field(_type => UserWhereUniqueInput, {
     nullable: true,
     description: undefined
   })
-  connect?: UserWhereUniqueInput[] | undefined;
+  connect?: UserWhereUniqueInput | undefined;
 }

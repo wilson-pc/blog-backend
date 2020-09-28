@@ -1,6 +1,7 @@
 import * as TypeGraphQL from "type-graphql";
 import GraphQLJSON from "graphql-type-json";
 import { JsonValue, InputJsonValue } from "@prisma/client";
+import { DateTimeFilter } from "../inputs/DateTimeFilter";
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
 
@@ -39,9 +40,21 @@ export class CommentScalarWhereInput {
   })
   message?: StringNullableFilter | undefined;
 
+  @TypeGraphQL.Field(_type => DateTimeFilter, {
+    nullable: true,
+    description: undefined
+  })
+  createdAt?: DateTimeFilter | undefined;
+
   @TypeGraphQL.Field(_type => StringFilter, {
     nullable: true,
     description: undefined
   })
   postId?: StringFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
+    nullable: true,
+    description: undefined
+  })
+  userId?: StringNullableFilter | undefined;
 }

@@ -21,13 +21,25 @@ export class Comment {
   })
   message?: string | null;
 
+  @TypeGraphQL.Field(_type => Date, {
+    nullable: false,
+    description: undefined,
+  })
+  createdAt!: Date;
+
   @TypeGraphQL.Field(_type => String, {
     nullable: false,
     description: undefined,
   })
   postId!: string;
 
-  posts?: Post;
+  post?: Post;
 
-  users?: User[] | null;
+  user?: User | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true,
+    description: undefined,
+  })
+  userId?: string | null;
 }

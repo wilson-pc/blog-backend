@@ -2,7 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import GraphQLJSON from "graphql-type-json";
 import { JsonValue, InputJsonValue } from "@prisma/client";
 import { PostCreateOneWithoutCommentsInput } from "../inputs/PostCreateOneWithoutCommentsInput";
-import { UserCreateManyWithoutCommentsInput } from "../inputs/UserCreateManyWithoutCommentsInput";
+import { UserCreateOneWithoutCommentsInput } from "../inputs/UserCreateOneWithoutCommentsInput";
 
 @TypeGraphQL.InputType({
   isAbstract: true,
@@ -21,15 +21,21 @@ export class CommentCreateInput {
   })
   message?: string | undefined;
 
+  @TypeGraphQL.Field(_type => Date, {
+    nullable: true,
+    description: undefined
+  })
+  createdAt?: Date | undefined;
+
   @TypeGraphQL.Field(_type => PostCreateOneWithoutCommentsInput, {
     nullable: false,
     description: undefined
   })
-  posts!: PostCreateOneWithoutCommentsInput;
+  post!: PostCreateOneWithoutCommentsInput;
 
-  @TypeGraphQL.Field(_type => UserCreateManyWithoutCommentsInput, {
+  @TypeGraphQL.Field(_type => UserCreateOneWithoutCommentsInput, {
     nullable: true,
     description: undefined
   })
-  users?: UserCreateManyWithoutCommentsInput | undefined;
+  user?: UserCreateOneWithoutCommentsInput | undefined;
 }

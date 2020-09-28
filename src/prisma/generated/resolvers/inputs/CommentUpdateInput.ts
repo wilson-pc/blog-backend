@@ -1,10 +1,11 @@
 import * as TypeGraphQL from "type-graphql";
 import GraphQLJSON from "graphql-type-json";
 import { JsonValue, InputJsonValue } from "@prisma/client";
+import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
 import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
 import { PostUpdateOneRequiredWithoutCommentsInput } from "../inputs/PostUpdateOneRequiredWithoutCommentsInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
-import { UserUpdateManyWithoutCommentsInput } from "../inputs/UserUpdateManyWithoutCommentsInput";
+import { UserUpdateOneWithoutCommentsInput } from "../inputs/UserUpdateOneWithoutCommentsInput";
 
 @TypeGraphQL.InputType({
   isAbstract: true,
@@ -23,15 +24,21 @@ export class CommentUpdateInput {
   })
   message?: NullableStringFieldUpdateOperationsInput | undefined;
 
+  @TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput, {
+    nullable: true,
+    description: undefined
+  })
+  createdAt?: DateTimeFieldUpdateOperationsInput | undefined;
+
   @TypeGraphQL.Field(_type => PostUpdateOneRequiredWithoutCommentsInput, {
     nullable: true,
     description: undefined
   })
-  posts?: PostUpdateOneRequiredWithoutCommentsInput | undefined;
+  post?: PostUpdateOneRequiredWithoutCommentsInput | undefined;
 
-  @TypeGraphQL.Field(_type => UserUpdateManyWithoutCommentsInput, {
+  @TypeGraphQL.Field(_type => UserUpdateOneWithoutCommentsInput, {
     nullable: true,
     description: undefined
   })
-  users?: UserUpdateManyWithoutCommentsInput | undefined;
+  user?: UserUpdateOneWithoutCommentsInput | undefined;
 }

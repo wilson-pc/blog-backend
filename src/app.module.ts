@@ -10,6 +10,7 @@ import { UserModule } from './user/user.module';
 import { PostModule } from './post/post.module';
 import { authChecker } from './auth/auth-checker';
 import { CategoryModule } from './category/category.module';
+import { CommentModule } from './comment/comment.module';
 
 const prisma = new PrismaClient();
 
@@ -33,6 +34,7 @@ const prisma = new PrismaClient();
     UserModule,
     PostModule,
     CategoryModule,
+    CommentModule,
   ],
   controllers: [AppController],
   providers: [AppService],

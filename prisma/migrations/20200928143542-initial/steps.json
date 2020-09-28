@@ -12,7 +12,7 @@
         "source": "db"
       },
       "argument": "provider",
-      "value": "\"sqlite\""
+      "value": "\"mysql\""
     },
     {
       "tag": "CreateArgument",
@@ -317,6 +317,17 @@
       "arity": "Required"
     },
     {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Post",
+          "field": "title"
+        },
+        "directive": "unique"
+      }
+    },
+    {
       "tag": "CreateField",
       "model": "Post",
       "field": "content",
@@ -504,6 +515,38 @@
     {
       "tag": "CreateField",
       "model": "Comment",
+      "field": "createdAt",
+      "type": "DateTime",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Comment",
+          "field": "createdAt"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Comment",
+          "field": "createdAt"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "now()"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Comment",
       "field": "postId",
       "type": "String",
       "arity": "Required"
@@ -511,7 +554,7 @@
     {
       "tag": "CreateField",
       "model": "Comment",
-      "field": "posts",
+      "field": "post",
       "type": "Post",
       "arity": "Required"
     },
@@ -521,7 +564,7 @@
         "path": {
           "tag": "Field",
           "model": "Comment",
-          "field": "posts"
+          "field": "post"
         },
         "directive": "relation"
       }
@@ -533,7 +576,7 @@
         "path": {
           "tag": "Field",
           "model": "Comment",
-          "field": "posts"
+          "field": "post"
         },
         "directive": "relation"
       },
@@ -547,7 +590,7 @@
         "path": {
           "tag": "Field",
           "model": "Comment",
-          "field": "posts"
+          "field": "post"
         },
         "directive": "relation"
       },
@@ -557,9 +600,9 @@
     {
       "tag": "CreateField",
       "model": "Comment",
-      "field": "users",
+      "field": "user",
       "type": "User",
-      "arity": "List"
+      "arity": "Optional"
     },
     {
       "tag": "CreateDirective",
@@ -567,7 +610,7 @@
         "path": {
           "tag": "Field",
           "model": "Comment",
-          "field": "users"
+          "field": "user"
         },
         "directive": "relation"
       }
@@ -579,12 +622,33 @@
         "path": {
           "tag": "Field",
           "model": "Comment",
-          "field": "users"
+          "field": "user"
+        },
+        "directive": "relation"
+      },
+      "argument": "fields",
+      "value": "[userId]"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Comment",
+          "field": "user"
         },
         "directive": "relation"
       },
       "argument": "references",
       "value": "[id]"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Comment",
+      "field": "userId",
+      "type": "String",
+      "arity": "Optional"
     },
     {
       "tag": "CreateModel",
@@ -639,6 +703,17 @@
       "field": "name",
       "type": "String",
       "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Category",
+          "field": "name"
+        },
+        "directive": "unique"
+      }
     },
     {
       "tag": "CreateField",

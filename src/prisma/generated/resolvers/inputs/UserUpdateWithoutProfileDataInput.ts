@@ -1,7 +1,7 @@
 import * as TypeGraphQL from "type-graphql";
 import GraphQLJSON from "graphql-type-json";
 import { JsonValue, InputJsonValue } from "@prisma/client";
-import { CommentUpdateManyWithoutUsersInput } from "../inputs/CommentUpdateManyWithoutUsersInput";
+import { CommentUpdateManyWithoutUserInput } from "../inputs/CommentUpdateManyWithoutUserInput";
 import { PostUpdateManyWithoutAuthorInput } from "../inputs/PostUpdateManyWithoutAuthorInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 
@@ -34,11 +34,11 @@ export class UserUpdateWithoutProfileDataInput {
   })
   password?: StringFieldUpdateOperationsInput | undefined;
 
-  @TypeGraphQL.Field(_type => CommentUpdateManyWithoutUsersInput, {
+  @TypeGraphQL.Field(_type => CommentUpdateManyWithoutUserInput, {
     nullable: true,
     description: undefined
   })
-  comments?: CommentUpdateManyWithoutUsersInput | undefined;
+  comments?: CommentUpdateManyWithoutUserInput | undefined;
 
   @TypeGraphQL.Field(_type => PostUpdateManyWithoutAuthorInput, {
     nullable: true,

@@ -2,7 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import GraphQLJSON from "graphql-type-json";
 import { JsonValue, InputJsonValue } from "@prisma/client";
 import { CategoryCreateManyWithoutPostsInput } from "../inputs/CategoryCreateManyWithoutPostsInput";
-import { CommentCreateManyWithoutPostsInput } from "../inputs/CommentCreateManyWithoutPostsInput";
+import { CommentCreateManyWithoutPostInput } from "../inputs/CommentCreateManyWithoutPostInput";
 import { UserCreateOneWithoutPostsInput } from "../inputs/UserCreateOneWithoutPostsInput";
 
 @TypeGraphQL.InputType({
@@ -52,9 +52,9 @@ export class PostCreateInput {
   })
   categories?: CategoryCreateManyWithoutPostsInput | undefined;
 
-  @TypeGraphQL.Field(_type => CommentCreateManyWithoutPostsInput, {
+  @TypeGraphQL.Field(_type => CommentCreateManyWithoutPostInput, {
     nullable: true,
     description: undefined
   })
-  comments?: CommentCreateManyWithoutPostsInput | undefined;
+  comments?: CommentCreateManyWithoutPostInput | undefined;
 }

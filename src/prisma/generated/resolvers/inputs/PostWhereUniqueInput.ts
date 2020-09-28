@@ -12,4 +12,10 @@ export class PostWhereUniqueInput {
     description: undefined
   })
   id?: string | undefined;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true,
+    description: undefined
+  })
+  title?: string | undefined;
 }

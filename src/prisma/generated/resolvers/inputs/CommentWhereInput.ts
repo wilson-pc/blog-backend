@@ -1,10 +1,11 @@
 import * as TypeGraphQL from "type-graphql";
 import GraphQLJSON from "graphql-type-json";
 import { JsonValue, InputJsonValue } from "@prisma/client";
+import { DateTimeFilter } from "../inputs/DateTimeFilter";
 import { PostWhereInput } from "../inputs/PostWhereInput";
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
-import { UserListRelationFilter } from "../inputs/UserListRelationFilter";
+import { UserWhereInput } from "../inputs/UserWhereInput";
 
 @TypeGraphQL.InputType({
   isAbstract: true,
@@ -41,6 +42,12 @@ export class CommentWhereInput {
   })
   message?: StringNullableFilter | undefined;
 
+  @TypeGraphQL.Field(_type => DateTimeFilter, {
+    nullable: true,
+    description: undefined
+  })
+  createdAt?: DateTimeFilter | undefined;
+
   @TypeGraphQL.Field(_type => StringFilter, {
     nullable: true,
     description: undefined
@@ -51,11 +58,17 @@ export class CommentWhereInput {
     nullable: true,
     description: undefined
   })
-  posts?: PostWhereInput | undefined;
+  post?: PostWhereInput | undefined;
 
-  @TypeGraphQL.Field(_type => UserListRelationFilter, {
+  @TypeGraphQL.Field(_type => UserWhereInput, {
     nullable: true,
     description: undefined
   })
-  users?: UserListRelationFilter | undefined;
+  user?: UserWhereInput | undefined;
+
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
+    nullable: true,
+    description: undefined
+  })
+  userId?: StringNullableFilter | undefined;
 }

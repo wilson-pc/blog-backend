@@ -4,5 +4,8 @@ export { CommentRelationsResolver } from "./Comment/CommentRelationsResolver";
 export { PostRelationsResolver } from "./Post/PostRelationsResolver";
 export * from "./Post/args";
 export { ProfileRelationsResolver } from "./Profile/ProfileRelationsResolver";
+export { ResolutionRelationsResolver } from "./Resolution/ResolutionRelationsResolver";
 export { UserRelationsResolver } from "./User/UserRelationsResolver";
 export * from "./User/args";
+export { Video2RelationsResolver } from "./Video2/Video2RelationsResolver";
+export * from "./Video2/args";

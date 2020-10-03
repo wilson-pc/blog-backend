@@ -7,7 +7,19 @@ type AggregateComment {
   count: Int!
 }
 
+type AggregateImagen {
+  count: Int!
+}
+
 type AggregatePost {
+  count: Int!
+}
+
+type AggregateVideo {
+  count: Int!
+}
+
+type AggregateVideo2 {
   count: Int!
 }
 
@@ -324,26 +336,94 @@ input DateTimeFilter {
   notIn: [Timestamp!]
 }
 
+type Imagen {
+  format: String!
+  id: String!
+  name: String!
+}
+
+input ImagenCreateInput {
+  format: String!
+  id: String
+  name: String!
+}
+
+enum ImagenDistinctFieldEnum {
+  format
+  id
+  name
+}
+
+input ImagenOrderByInput {
+  format: SortOrder
+  id: SortOrder
+  name: SortOrder
+}
+
+input ImagenUpdateInput {
+  format: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+}
+
+input ImagenUpdateManyMutationInput {
+  format: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+}
+
+input ImagenWhereInput {
+  AND: [ImagenWhereInput!]
+  format: StringFilter
+  id: StringFilter
+  name: StringFilter
+  NOT: [ImagenWhereInput!]
+  OR: [ImagenWhereInput!]
+}
+
+input ImagenWhereUniqueInput {
+  id: String
+  name: String
+}
+
 type Mutation {
   createCategory(data: CategoryCreateInput!): Category!
   createComment(data: CommentCreateInput!): Comment!
+  createImagen(data: ImagenCreateInput!): Imagen!
   createPost(data: PostCreateInput!): Post!
   createUser(data: UserCreateInput!): User!
+  createVideo(data: VideoCreateInput!): Video!
+  createVideo2(data: Video2CreateInput!): Video2!
   deleteCategory(where: CategoryWhereUniqueInput!): Category
   deleteComment(where: CommentWhereUniqueInput!): Comment
+  deleteImagen(where: ImagenWhereUniqueInput!): Imagen
   deleteManyComment(where: CommentWhereInput): BatchPayload!
+  deleteManyImagen(where: ImagenWhereInput): BatchPayload!
   deleteManyPost(where: PostWhereInput): BatchPayload!
+  deleteManyVideo(where: VideoWhereInput): BatchPayload!
+  deleteManyVideo2(where: Video2WhereInput): BatchPayload!
   deletePost(where: PostWhereUniqueInput!): Post
   deleteUser(where: UserWhereUniqueInput!): User
+  deleteVideo(where: VideoWhereUniqueInput!): Video
+  deleteVideo2(where: Video2WhereUniqueInput!): Video2
   login(login: AuthInput!): AuthPayload!
   publishPost(id: String!): Post
   updateComment(data: CommentUpdateInput!, where: CommentWhereUniqueInput!): Comment
+  updateImagen(data: ImagenUpdateInput!, where: ImagenWhereUniqueInput!): Imagen
   updateManyComment(data: CommentUpdateManyMutationInput!, where: CommentWhereInput): BatchPayload!
+  updateManyImagen(data: ImagenUpdateManyMutationInput!, where: ImagenWhereInput): BatchPayload!
   updateManyPost(data: PostUpdateManyMutationInput!, where: PostWhereInput): BatchPayload!
+  updateManyVideo(data: VideoUpdateManyMutationInput!, where: VideoWhereInput): BatchPayload!
+  updateManyVideo2(data: Video2UpdateManyMutationInput!, where: Video2WhereInput): BatchPayload!
   updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateVideo(data: VideoUpdateInput!, where: VideoWhereUniqueInput!): Video
+  updateVideo2(data: Video2UpdateInput!, where: Video2WhereUniqueInput!): Video2
   upsertComment(create: CommentCreateInput!, update: CommentUpdateInput!, where: CommentWhereUniqueInput!): Comment!
+  upsertImagen(create: ImagenCreateInput!, update: ImagenUpdateInput!, where: ImagenWhereUniqueInput!): Imagen!
   upsertPost(create: PostCreateInput!, update: PostUpdateInput!, where: PostWhereUniqueInput!): Post!
+  upsertVideo(create: VideoCreateInput!, update: VideoUpdateInput!, where: VideoWhereUniqueInput!): Video!
+  upsertVideo2(create: Video2CreateInput!, update: Video2UpdateInput!, where: Video2WhereUniqueInput!): Video2!
 }
 
 input NestedBoolFilter {
@@ -660,16 +740,122 @@ input ProfileWhereUniqueInput {
 
 type Query {
   aggregateComment(cursor: CommentWhereUniqueInput, distinct: [CommentDistinctFieldEnum!], orderBy: [CommentOrderByInput!], skip: Int, take: Int, where: CommentWhereInput): AggregateComment!
+  aggregateImagen(cursor: ImagenWhereUniqueInput, distinct: [ImagenDistinctFieldEnum!], orderBy: [ImagenOrderByInput!], skip: Int, take: Int, where: ImagenWhereInput): AggregateImagen!
   aggregatePost(cursor: PostWhereUniqueInput, distinct: [PostDistinctFieldEnum!], orderBy: [PostOrderByInput!], skip: Int, take: Int, where: PostWhereInput): AggregatePost!
+  aggregateVideo(cursor: VideoWhereUniqueInput, distinct: [VideoDistinctFieldEnum!], orderBy: [VideoOrderByInput!], skip: Int, take: Int, where: VideoWhereInput): AggregateVideo!
+  aggregateVideo2(cursor: Video2WhereUniqueInput, distinct: [Video2DistinctFieldEnum!], orderBy: [Video2OrderByInput!], skip: Int, take: Int, where: Video2WhereInput): AggregateVideo2!
   categories(cursor: CategoryWhereUniqueInput, distinct: [CategoryDistinctFieldEnum!], orderBy: [CategoryOrderByInput!], skip: Int, take: Int, where: CategoryWhereInput): [Category!]!
   category(where: CategoryWhereUniqueInput!): Category
   comment(where: CommentWhereUniqueInput!): Comment
   comments(cursor: CommentWhereUniqueInput, distinct: [CommentDistinctFieldEnum!], orderBy: [CommentOrderByInput!], skip: Int, take: Int, where: CommentWhereInput): [Comment!]!
+  imagen(where: ImagenWhereUniqueInput!): Imagen
+  imagens(cursor: ImagenWhereUniqueInput, distinct: [ImagenDistinctFieldEnum!], orderBy: [ImagenOrderByInput!], skip: Int, take: Int, where: ImagenWhereInput): [Imagen!]!
   post(where: PostWhereUniqueInput!): Post
   posts(cursor: PostWhereUniqueInput, distinct: [PostDistinctFieldEnum!], orderBy: [PostOrderByInput!], skip: Int, take: Int, where: PostWhereInput): [Post!]!
   profile: User!
   user(where: UserWhereUniqueInput!): User
   users(cursor: UserWhereUniqueInput, distinct: [UserDistinctFieldEnum!], orderBy: [UserOrderByInput!], skip: Int, take: Int, where: UserWhereInput): [User!]!
+  video(where: VideoWhereUniqueInput!): Video
+  video2(where: Video2WhereUniqueInput!): Video2
+  video2s(cursor: Video2WhereUniqueInput, distinct: [Video2DistinctFieldEnum!], orderBy: [Video2OrderByInput!], skip: Int, take: Int, where: Video2WhereInput): [Video2!]!
+  videos(cursor: VideoWhereUniqueInput, distinct: [VideoDistinctFieldEnum!], orderBy: [VideoOrderByInput!], skip: Int, take: Int, where: VideoWhereInput): [Video!]!
+}
+
+type Resolution {
+  id: String!
+  name: String!
+  video: Video2!
+  videoId: String!
+}
+
+input ResolutionCreateManyWithoutVideoInput {
+  connect: [ResolutionWhereUniqueInput!]
+  create: [ResolutionCreateWithoutVideoInput!]
+}
+
+input ResolutionCreateWithoutVideoInput {
+  id: String
+  name: String!
+}
+
+enum ResolutionDistinctFieldEnum {
+  id
+  name
+  videoId
+}
+
+input ResolutionListRelationFilter {
+  every: ResolutionWhereInput
+  none: ResolutionWhereInput
+  some: ResolutionWhereInput
+}
+
+input ResolutionOrderByInput {
+  id: SortOrder
+  name: SortOrder
+  videoId: SortOrder
+}
+
+input ResolutionScalarWhereInput {
+  AND: [ResolutionScalarWhereInput!]
+  id: StringFilter
+  name: StringFilter
+  NOT: [ResolutionScalarWhereInput!]
+  OR: [ResolutionScalarWhereInput!]
+  videoId: StringFilter
+}
+
+input ResolutionUpdateManyDataInput {
+  id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+}
+
+input ResolutionUpdateManyWithoutVideoInput {
+  connect: [ResolutionWhereUniqueInput!]
+  create: [ResolutionCreateWithoutVideoInput!]
+  delete: [ResolutionWhereUniqueInput!]
+  deleteMany: [ResolutionScalarWhereInput!]
+  disconnect: [ResolutionWhereUniqueInput!]
+  set: [ResolutionWhereUniqueInput!]
+  update: [ResolutionUpdateWithWhereUniqueWithoutVideoInput!]
+  updateMany: [ResolutionUpdateManyWithWhereNestedInput!]
+  upsert: [ResolutionUpsertWithWhereUniqueWithoutVideoInput!]
+}
+
+input ResolutionUpdateManyWithWhereNestedInput {
+  data: ResolutionUpdateManyDataInput!
+  where: ResolutionScalarWhereInput!
+}
+
+input ResolutionUpdateWithoutVideoDataInput {
+  id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+}
+
+input ResolutionUpdateWithWhereUniqueWithoutVideoInput {
+  data: ResolutionUpdateWithoutVideoDataInput!
+  where: ResolutionWhereUniqueInput!
+}
+
+input ResolutionUpsertWithWhereUniqueWithoutVideoInput {
+  create: ResolutionCreateWithoutVideoInput!
+  update: ResolutionUpdateWithoutVideoDataInput!
+  where: ResolutionWhereUniqueInput!
+}
+
+input ResolutionWhereInput {
+  AND: [ResolutionWhereInput!]
+  id: StringFilter
+  name: StringFilter
+  NOT: [ResolutionWhereInput!]
+  OR: [ResolutionWhereInput!]
+  video: Video2WhereInput
+  videoId: StringFilter
+}
+
+input ResolutionWhereUniqueInput {
+  id: String
+  name: String
 }
 
 enum SortOrder {
@@ -847,4 +1033,115 @@ input UserWhereInput {
 input UserWhereUniqueInput {
   email: String
   id: String
+}
+
+type Video {
+  format: String!
+  hls: Boolean!
+  id: String!
+  name: String!
+}
+
+type Video2 {
+  id: String!
+  name: String!
+  resolutions(cursor: ResolutionWhereUniqueInput, distinct: [ResolutionDistinctFieldEnum!], orderBy: [ResolutionOrderByInput!], skip: Int, take: Int, where: ResolutionWhereInput): [Resolution!]
+  web: Boolean!
+}
+
+input Video2CreateInput {
+  id: String
+  name: String!
+  resolutions: ResolutionCreateManyWithoutVideoInput
+  web: Boolean
+}
+
+enum Video2DistinctFieldEnum {
+  id
+  name
+  web
+}
+
+input Video2OrderByInput {
+  id: SortOrder
+  name: SortOrder
+  web: SortOrder
+}
+
+input Video2UpdateInput {
+  id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  resolutions: ResolutionUpdateManyWithoutVideoInput
+  web: BoolFieldUpdateOperationsInput
+}
+
+input Video2UpdateManyMutationInput {
+  id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  web: BoolFieldUpdateOperationsInput
+}
+
+input Video2WhereInput {
+  AND: [Video2WhereInput!]
+  id: StringFilter
+  name: StringFilter
+  NOT: [Video2WhereInput!]
+  OR: [Video2WhereInput!]
+  resolutions: ResolutionListRelationFilter
+  web: BoolFilter
+}
+
+input Video2WhereUniqueInput {
+  id: String
+  name: String
+}
+
+input VideoCreateInput {
+  format: String!
+  hls: Boolean
+  id: String
+  name: String!
+}
+
+enum VideoDistinctFieldEnum {
+  format
+  hls
+  id
+  name
+}
+
+input VideoOrderByInput {
+  format: SortOrder
+  hls: SortOrder
+  id: SortOrder
+  name: SortOrder
+}
+
+input VideoUpdateInput {
+  format: StringFieldUpdateOperationsInput
+  hls: BoolFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+}
+
+input VideoUpdateManyMutationInput {
+  format: StringFieldUpdateOperationsInput
+  hls: BoolFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+}
+
+input VideoWhereInput {
+  AND: [VideoWhereInput!]
+  format: StringFilter
+  hls: BoolFilter
+  id: StringFilter
+  name: StringFilter
+  NOT: [VideoWhereInput!]
+  OR: [VideoWhereInput!]
+}
+
+input VideoWhereUniqueInput {
+  id: String
+  name: String
 }

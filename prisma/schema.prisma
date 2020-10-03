@@ -2,7 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
-  provider = "mysql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -60,5 +60,34 @@ model Category {
   id    String @id @default(uuid())
   name  String @unique
   posts Post[] @relation(references: [id])
+
+}
+
+model Video {
+  id    String @id @default(uuid())
+  name  String @unique
+  format String
+  hls Boolean @default(false)
+
+}
+model Imagen{
+   id    String @id @default(uuid())
+  name  String @unique
+  format String
+ 
+}
+model Video2{
+   id    String @id @default(uuid())
+   name  String @unique
+  web Boolean @default(false)
+  resolutions Resolution[]
+
+}
+
+model Resolution{
+   id    String @id @default(uuid())
+   name  String @unique
+   videoId String
+   video Video2 @relation(fields: [videoId], references: [id])
 
 }

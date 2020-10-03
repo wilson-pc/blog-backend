@@ -1,6 +1,10 @@
 export { AggregateCategory } from "./AggregateCategory";
 export { AggregateComment } from "./AggregateComment";
+export { AggregateImagen } from "./AggregateImagen";
 export { AggregatePost } from "./AggregatePost";
 export { AggregateProfile } from "./AggregateProfile";
+export { AggregateResolution } from "./AggregateResolution";
 export { AggregateUser } from "./AggregateUser";
+export { AggregateVideo } from "./AggregateVideo";
+export { AggregateVideo2 } from "./AggregateVideo2";
 export { BatchPayload } from "./BatchPayload";

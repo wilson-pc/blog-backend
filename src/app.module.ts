@@ -11,6 +11,13 @@ import { PostModule } from './post/post.module';
 import { authChecker } from './auth/auth-checker';
 import { CategoryModule } from './category/category.module';
 import { CommentModule } from './comment/comment.module';
+import { MulterModule } from '@nestjs/platform-express/multer/multer.module';
+import {
+  ImagenCrudResolver,
+  Video2CrudResolver,
+  Video2RelationsResolver,
+  VideoCrudResolver,
+} from './prisma/generated';
 
 const prisma = new PrismaClient();
 
@@ -30,6 +37,7 @@ const prisma = new PrismaClient();
       dateScalarMode: 'timestamp',
       context: ({ req }): Context => ({ prisma: prisma, req: req }),
     }),
+
     AuthModule,
     UserModule,
     PostModule,
@@ -37,6 +45,12 @@ const prisma = new PrismaClient();
     CommentModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    VideoCrudResolver,
+    Video2CrudResolver,
+    ImagenCrudResolver,
+    Video2RelationsResolver,
+  ],
 })
 export class AppModule {}

@@ -1,5 +1,9 @@
 export { Category } from "./Category";
 export { Comment } from "./Comment";
+export { Imagen } from "./Imagen";
 export { Post } from "./Post";
 export { Profile } from "./Profile";
+export { Resolution } from "./Resolution";
 export { User } from "./User";
+export { Video } from "./Video";
+export { Video2 } from "./Video2";

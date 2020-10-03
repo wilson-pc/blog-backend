@@ -1,0 +1,9 @@
+export { AggregateVideoArgs } from "./AggregateVideoArgs";
+export { CreateVideoArgs } from "./CreateVideoArgs";
+export { DeleteManyVideoArgs } from "./DeleteManyVideoArgs";
+export { DeleteVideoArgs } from "./DeleteVideoArgs";
+export { FindManyVideoArgs } from "./FindManyVideoArgs";
+export { FindOneVideoArgs } from "./FindOneVideoArgs";
+export { UpdateManyVideoArgs } from "./UpdateManyVideoArgs";
+export { UpdateVideoArgs } from "./UpdateVideoArgs";
+export { UpsertVideoArgs } from "./UpsertVideoArgs";

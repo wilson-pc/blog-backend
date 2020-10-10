@@ -1,7 +1,9 @@
 import * as TypeGraphQL from "type-graphql";
 import GraphQLJSON from "graphql-type-json";
 import { JsonValue, InputJsonValue } from "@prisma/client";
+import { StepWhereInput } from "../inputs/StepWhereInput";
 import { StringFilter } from "../inputs/StringFilter";
+import { StringNullableFilter } from "../inputs/StringNullableFilter";
 
 @TypeGraphQL.InputType({
   isAbstract: true,
@@ -43,4 +45,16 @@ export class ImagenWhereInput {
     description: undefined
   })
   format?: StringFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StepWhereInput, {
+    nullable: true,
+    description: undefined
+  })
+  Step?: StepWhereInput | undefined;
+
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
+    nullable: true,
+    description: undefined
+  })
+  stepId?: StringNullableFilter | undefined;
 }

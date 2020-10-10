@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import GraphQLJSON from "graphql-type-json";
 import { JsonValue, InputJsonValue } from "@prisma/client";
 import { BoolFilter } from "../inputs/BoolFilter";
+import { RecipeWhereInput } from "../inputs/RecipeWhereInput";
 import { StringFilter } from "../inputs/StringFilter";
 
 @TypeGraphQL.InputType({
@@ -50,4 +51,10 @@ export class VideoWhereInput {
     description: undefined
   })
   hls?: BoolFilter | undefined;
+
+  @TypeGraphQL.Field(_type => RecipeWhereInput, {
+    nullable: true,
+    description: undefined
+  })
+  Recipe?: RecipeWhereInput | undefined;
 }

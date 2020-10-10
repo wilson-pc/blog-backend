@@ -11,7 +11,19 @@ type AggregateImagen {
   count: Int!
 }
 
+type AggregateIngredient {
+  count: Int!
+}
+
 type AggregatePost {
+  count: Int!
+}
+
+type AggregateRecipe {
+  count: Int!
+}
+
+type AggregateStep {
   count: Int!
 }
 
@@ -340,9 +352,23 @@ type Imagen {
   format: String!
   id: String!
   name: String!
+  Step: Step
+  stepId: String
 }
 
 input ImagenCreateInput {
+  format: String!
+  id: String
+  name: String!
+  Step: StepCreateOneWithoutImagesInput
+}
+
+input ImagenCreateManyWithoutStepInput {
+  connect: [ImagenWhereUniqueInput!]
+  create: [ImagenCreateWithoutStepInput!]
+}
+
+input ImagenCreateWithoutStepInput {
   format: String!
   id: String
   name: String!
@@ -352,15 +378,40 @@ enum ImagenDistinctFieldEnum {
   format
   id
   name
+  stepId
+}
+
+input ImagenListRelationFilter {
+  every: ImagenWhereInput
+  none: ImagenWhereInput
+  some: ImagenWhereInput
 }
 
 input ImagenOrderByInput {
   format: SortOrder
   id: SortOrder
   name: SortOrder
+  stepId: SortOrder
+}
+
+input ImagenScalarWhereInput {
+  AND: [ImagenScalarWhereInput!]
+  format: StringFilter
+  id: StringFilter
+  name: StringFilter
+  NOT: [ImagenScalarWhereInput!]
+  OR: [ImagenScalarWhereInput!]
+  stepId: StringNullableFilter
 }
 
 input ImagenUpdateInput {
+  format: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  Step: StepUpdateOneWithoutImagesInput
+}
+
+input ImagenUpdateManyDataInput {
   format: StringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
@@ -372,6 +423,40 @@ input ImagenUpdateManyMutationInput {
   name: StringFieldUpdateOperationsInput
 }
 
+input ImagenUpdateManyWithoutStepInput {
+  connect: [ImagenWhereUniqueInput!]
+  create: [ImagenCreateWithoutStepInput!]
+  delete: [ImagenWhereUniqueInput!]
+  deleteMany: [ImagenScalarWhereInput!]
+  disconnect: [ImagenWhereUniqueInput!]
+  set: [ImagenWhereUniqueInput!]
+  update: [ImagenUpdateWithWhereUniqueWithoutStepInput!]
+  updateMany: [ImagenUpdateManyWithWhereNestedInput!]
+  upsert: [ImagenUpsertWithWhereUniqueWithoutStepInput!]
+}
+
+input ImagenUpdateManyWithWhereNestedInput {
+  data: ImagenUpdateManyDataInput!
+  where: ImagenScalarWhereInput!
+}
+
+input ImagenUpdateWithoutStepDataInput {
+  format: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+}
+
+input ImagenUpdateWithWhereUniqueWithoutStepInput {
+  data: ImagenUpdateWithoutStepDataInput!
+  where: ImagenWhereUniqueInput!
+}
+
+input ImagenUpsertWithWhereUniqueWithoutStepInput {
+  create: ImagenCreateWithoutStepInput!
+  update: ImagenUpdateWithoutStepDataInput!
+  where: ImagenWhereUniqueInput!
+}
+
 input ImagenWhereInput {
   AND: [ImagenWhereInput!]
   format: StringFilter
@@ -379,6 +464,8 @@ input ImagenWhereInput {
   name: StringFilter
   NOT: [ImagenWhereInput!]
   OR: [ImagenWhereInput!]
+  Step: StepWhereInput
+  stepId: StringNullableFilter
 }
 
 input ImagenWhereUniqueInput {
@@ -386,23 +473,145 @@ input ImagenWhereUniqueInput {
   name: String
 }
 
+type Ingredient {
+  id: String!
+  name: String!
+  Recipe: Recipe
+  recipeId: String
+}
+
+input IngredientCreateInput {
+  id: String
+  name: String!
+  Recipe: RecipeCreateOneWithoutIngredientsInput
+}
+
+input IngredientCreateManyWithoutRecipeInput {
+  connect: [IngredientWhereUniqueInput!]
+  create: [IngredientCreateWithoutRecipeInput!]
+}
+
+input IngredientCreateWithoutRecipeInput {
+  id: String
+  name: String!
+}
+
+enum IngredientDistinctFieldEnum {
+  id
+  name
+  recipeId
+}
+
+input IngredientListRelationFilter {
+  every: IngredientWhereInput
+  none: IngredientWhereInput
+  some: IngredientWhereInput
+}
+
+input IngredientOrderByInput {
+  id: SortOrder
+  name: SortOrder
+  recipeId: SortOrder
+}
+
+input IngredientScalarWhereInput {
+  AND: [IngredientScalarWhereInput!]
+  id: StringFilter
+  name: StringFilter
+  NOT: [IngredientScalarWhereInput!]
+  OR: [IngredientScalarWhereInput!]
+  recipeId: StringNullableFilter
+}
+
+input IngredientUpdateInput {
+  id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  Recipe: RecipeUpdateOneWithoutIngredientsInput
+}
+
+input IngredientUpdateManyDataInput {
+  id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+}
+
+input IngredientUpdateManyMutationInput {
+  id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+}
+
+input IngredientUpdateManyWithoutRecipeInput {
+  connect: [IngredientWhereUniqueInput!]
+  create: [IngredientCreateWithoutRecipeInput!]
+  delete: [IngredientWhereUniqueInput!]
+  deleteMany: [IngredientScalarWhereInput!]
+  disconnect: [IngredientWhereUniqueInput!]
+  set: [IngredientWhereUniqueInput!]
+  update: [IngredientUpdateWithWhereUniqueWithoutRecipeInput!]
+  updateMany: [IngredientUpdateManyWithWhereNestedInput!]
+  upsert: [IngredientUpsertWithWhereUniqueWithoutRecipeInput!]
+}
+
+input IngredientUpdateManyWithWhereNestedInput {
+  data: IngredientUpdateManyDataInput!
+  where: IngredientScalarWhereInput!
+}
+
+input IngredientUpdateWithoutRecipeDataInput {
+  id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+}
+
+input IngredientUpdateWithWhereUniqueWithoutRecipeInput {
+  data: IngredientUpdateWithoutRecipeDataInput!
+  where: IngredientWhereUniqueInput!
+}
+
+input IngredientUpsertWithWhereUniqueWithoutRecipeInput {
+  create: IngredientCreateWithoutRecipeInput!
+  update: IngredientUpdateWithoutRecipeDataInput!
+  where: IngredientWhereUniqueInput!
+}
+
+input IngredientWhereInput {
+  AND: [IngredientWhereInput!]
+  id: StringFilter
+  name: StringFilter
+  NOT: [IngredientWhereInput!]
+  OR: [IngredientWhereInput!]
+  Recipe: RecipeWhereInput
+  recipeId: StringNullableFilter
+}
+
+input IngredientWhereUniqueInput {
+  id: String
+}
+
 type Mutation {
   createCategory(data: CategoryCreateInput!): Category!
   createComment(data: CommentCreateInput!): Comment!
   createImagen(data: ImagenCreateInput!): Imagen!
+  createIngredient(data: IngredientCreateInput!): Ingredient!
   createPost(data: PostCreateInput!): Post!
+  createRecipe(data: RecipeCreateInput!): Recipe!
+  createStep(data: StepCreateInput!): Step!
   createUser(data: UserCreateInput!): User!
   createVideo(data: VideoCreateInput!): Video!
   createVideo2(data: Video2CreateInput!): Video2!
   deleteCategory(where: CategoryWhereUniqueInput!): Category
   deleteComment(where: CommentWhereUniqueInput!): Comment
   deleteImagen(where: ImagenWhereUniqueInput!): Imagen
+  deleteIngredient(where: IngredientWhereUniqueInput!): Ingredient
   deleteManyComment(where: CommentWhereInput): BatchPayload!
   deleteManyImagen(where: ImagenWhereInput): BatchPayload!
+  deleteManyIngredient(where: IngredientWhereInput): BatchPayload!
   deleteManyPost(where: PostWhereInput): BatchPayload!
+  deleteManyRecipe(where: RecipeWhereInput): BatchPayload!
+  deleteManyStep(where: StepWhereInput): BatchPayload!
   deleteManyVideo(where: VideoWhereInput): BatchPayload!
   deleteManyVideo2(where: Video2WhereInput): BatchPayload!
   deletePost(where: PostWhereUniqueInput!): Post
+  deleteRecipe(where: RecipeWhereUniqueInput!): Recipe
+  deleteStep(where: StepWhereUniqueInput!): Step
   deleteUser(where: UserWhereUniqueInput!): User
   deleteVideo(where: VideoWhereUniqueInput!): Video
   deleteVideo2(where: Video2WhereUniqueInput!): Video2
@@ -410,18 +619,27 @@ type Mutation {
   publishPost(id: String!): Post
   updateComment(data: CommentUpdateInput!, where: CommentWhereUniqueInput!): Comment
   updateImagen(data: ImagenUpdateInput!, where: ImagenWhereUniqueInput!): Imagen
+  updateIngredient(data: IngredientUpdateInput!, where: IngredientWhereUniqueInput!): Ingredient
   updateManyComment(data: CommentUpdateManyMutationInput!, where: CommentWhereInput): BatchPayload!
   updateManyImagen(data: ImagenUpdateManyMutationInput!, where: ImagenWhereInput): BatchPayload!
+  updateManyIngredient(data: IngredientUpdateManyMutationInput!, where: IngredientWhereInput): BatchPayload!
   updateManyPost(data: PostUpdateManyMutationInput!, where: PostWhereInput): BatchPayload!
+  updateManyRecipe(data: RecipeUpdateManyMutationInput!, where: RecipeWhereInput): BatchPayload!
+  updateManyStep(data: StepUpdateManyMutationInput!, where: StepWhereInput): BatchPayload!
   updateManyVideo(data: VideoUpdateManyMutationInput!, where: VideoWhereInput): BatchPayload!
   updateManyVideo2(data: Video2UpdateManyMutationInput!, where: Video2WhereInput): BatchPayload!
   updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
+  updateRecipe(data: RecipeUpdateInput!, where: RecipeWhereUniqueInput!): Recipe
+  updateStep(data: StepUpdateInput!, where: StepWhereUniqueInput!): Step
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateVideo(data: VideoUpdateInput!, where: VideoWhereUniqueInput!): Video
   updateVideo2(data: Video2UpdateInput!, where: Video2WhereUniqueInput!): Video2
   upsertComment(create: CommentCreateInput!, update: CommentUpdateInput!, where: CommentWhereUniqueInput!): Comment!
   upsertImagen(create: ImagenCreateInput!, update: ImagenUpdateInput!, where: ImagenWhereUniqueInput!): Imagen!
+  upsertIngredient(create: IngredientCreateInput!, update: IngredientUpdateInput!, where: IngredientWhereUniqueInput!): Ingredient!
   upsertPost(create: PostCreateInput!, update: PostUpdateInput!, where: PostWhereUniqueInput!): Post!
+  upsertRecipe(create: RecipeCreateInput!, update: RecipeUpdateInput!, where: RecipeWhereUniqueInput!): Recipe!
+  upsertStep(create: StepCreateInput!, update: StepUpdateInput!, where: StepWhereUniqueInput!): Step!
   upsertVideo(create: VideoCreateInput!, update: VideoUpdateInput!, where: VideoWhereUniqueInput!): Video!
   upsertVideo2(create: Video2CreateInput!, update: Video2UpdateInput!, where: Video2WhereUniqueInput!): Video2!
 }
@@ -741,7 +959,10 @@ input ProfileWhereUniqueInput {
 type Query {
   aggregateComment(cursor: CommentWhereUniqueInput, distinct: [CommentDistinctFieldEnum!], orderBy: [CommentOrderByInput!], skip: Int, take: Int, where: CommentWhereInput): AggregateComment!
   aggregateImagen(cursor: ImagenWhereUniqueInput, distinct: [ImagenDistinctFieldEnum!], orderBy: [ImagenOrderByInput!], skip: Int, take: Int, where: ImagenWhereInput): AggregateImagen!
+  aggregateIngredient(cursor: IngredientWhereUniqueInput, distinct: [IngredientDistinctFieldEnum!], orderBy: [IngredientOrderByInput!], skip: Int, take: Int, where: IngredientWhereInput): AggregateIngredient!
   aggregatePost(cursor: PostWhereUniqueInput, distinct: [PostDistinctFieldEnum!], orderBy: [PostOrderByInput!], skip: Int, take: Int, where: PostWhereInput): AggregatePost!
+  aggregateRecipe(cursor: RecipeWhereUniqueInput, distinct: [RecipeDistinctFieldEnum!], orderBy: [RecipeOrderByInput!], skip: Int, take: Int, where: RecipeWhereInput): AggregateRecipe!
+  aggregateStep(cursor: StepWhereUniqueInput, distinct: [StepDistinctFieldEnum!], orderBy: [StepOrderByInput!], skip: Int, take: Int, where: StepWhereInput): AggregateStep!
   aggregateVideo(cursor: VideoWhereUniqueInput, distinct: [VideoDistinctFieldEnum!], orderBy: [VideoOrderByInput!], skip: Int, take: Int, where: VideoWhereInput): AggregateVideo!
   aggregateVideo2(cursor: Video2WhereUniqueInput, distinct: [Video2DistinctFieldEnum!], orderBy: [Video2OrderByInput!], skip: Int, take: Int, where: Video2WhereInput): AggregateVideo2!
   categories(cursor: CategoryWhereUniqueInput, distinct: [CategoryDistinctFieldEnum!], orderBy: [CategoryOrderByInput!], skip: Int, take: Int, where: CategoryWhereInput): [Category!]!
@@ -750,15 +971,159 @@ type Query {
   comments(cursor: CommentWhereUniqueInput, distinct: [CommentDistinctFieldEnum!], orderBy: [CommentOrderByInput!], skip: Int, take: Int, where: CommentWhereInput): [Comment!]!
   imagen(where: ImagenWhereUniqueInput!): Imagen
   imagens(cursor: ImagenWhereUniqueInput, distinct: [ImagenDistinctFieldEnum!], orderBy: [ImagenOrderByInput!], skip: Int, take: Int, where: ImagenWhereInput): [Imagen!]!
+  ingredient(where: IngredientWhereUniqueInput!): Ingredient
+  ingredients(cursor: IngredientWhereUniqueInput, distinct: [IngredientDistinctFieldEnum!], orderBy: [IngredientOrderByInput!], skip: Int, take: Int, where: IngredientWhereInput): [Ingredient!]!
   post(where: PostWhereUniqueInput!): Post
   posts(cursor: PostWhereUniqueInput, distinct: [PostDistinctFieldEnum!], orderBy: [PostOrderByInput!], skip: Int, take: Int, where: PostWhereInput): [Post!]!
   profile: User!
+  recipe(where: RecipeWhereUniqueInput!): Recipe
+  recipes(cursor: RecipeWhereUniqueInput, distinct: [RecipeDistinctFieldEnum!], orderBy: [RecipeOrderByInput!], skip: Int, take: Int, where: RecipeWhereInput): [Recipe!]!
+  step(where: StepWhereUniqueInput!): Step
+  steps(cursor: StepWhereUniqueInput, distinct: [StepDistinctFieldEnum!], orderBy: [StepOrderByInput!], skip: Int, take: Int, where: StepWhereInput): [Step!]!
   user(where: UserWhereUniqueInput!): User
   users(cursor: UserWhereUniqueInput, distinct: [UserDistinctFieldEnum!], orderBy: [UserOrderByInput!], skip: Int, take: Int, where: UserWhereInput): [User!]!
   video(where: VideoWhereUniqueInput!): Video
   video2(where: Video2WhereUniqueInput!): Video2
   video2s(cursor: Video2WhereUniqueInput, distinct: [Video2DistinctFieldEnum!], orderBy: [Video2OrderByInput!], skip: Int, take: Int, where: Video2WhereInput): [Video2!]!
   videos(cursor: VideoWhereUniqueInput, distinct: [VideoDistinctFieldEnum!], orderBy: [VideoOrderByInput!], skip: Int, take: Int, where: VideoWhereInput): [Video!]!
+}
+
+type Recipe {
+  description: String
+  id: String!
+  ingredients(cursor: IngredientWhereUniqueInput, distinct: [IngredientDistinctFieldEnum!], orderBy: [IngredientOrderByInput!], skip: Int, take: Int, where: IngredientWhereInput): [Ingredient!]
+  name: String!
+  people: String
+  video: Video
+  videoId: String
+}
+
+input RecipeCreateInput {
+  description: String
+  id: String
+  ingredients: IngredientCreateManyWithoutRecipeInput
+  name: String!
+  people: String
+  video: VideoCreateOneWithoutRecipeInput
+}
+
+input RecipeCreateOneWithoutIngredientsInput {
+  connect: RecipeWhereUniqueInput
+  create: RecipeCreateWithoutIngredientsInput
+}
+
+input RecipeCreateOneWithoutVideoInput {
+  connect: RecipeWhereUniqueInput
+  create: RecipeCreateWithoutVideoInput
+}
+
+input RecipeCreateWithoutIngredientsInput {
+  description: String
+  id: String
+  name: String!
+  people: String
+  video: VideoCreateOneWithoutRecipeInput
+}
+
+input RecipeCreateWithoutVideoInput {
+  description: String
+  id: String
+  ingredients: IngredientCreateManyWithoutRecipeInput
+  name: String!
+  people: String
+}
+
+enum RecipeDistinctFieldEnum {
+  description
+  id
+  name
+  people
+  videoId
+}
+
+input RecipeOrderByInput {
+  description: SortOrder
+  id: SortOrder
+  name: SortOrder
+  people: SortOrder
+  videoId: SortOrder
+}
+
+input RecipeUpdateInput {
+  description: NullableStringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  ingredients: IngredientUpdateManyWithoutRecipeInput
+  name: StringFieldUpdateOperationsInput
+  people: NullableStringFieldUpdateOperationsInput
+  video: VideoUpdateOneWithoutRecipeInput
+}
+
+input RecipeUpdateManyMutationInput {
+  description: NullableStringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  people: NullableStringFieldUpdateOperationsInput
+}
+
+input RecipeUpdateOneWithoutIngredientsInput {
+  connect: RecipeWhereUniqueInput
+  create: RecipeCreateWithoutIngredientsInput
+  delete: Boolean
+  disconnect: Boolean
+  update: RecipeUpdateWithoutIngredientsDataInput
+  upsert: RecipeUpsertWithoutIngredientsInput
+}
+
+input RecipeUpdateOneWithoutVideoInput {
+  connect: RecipeWhereUniqueInput
+  create: RecipeCreateWithoutVideoInput
+  delete: Boolean
+  disconnect: Boolean
+  update: RecipeUpdateWithoutVideoDataInput
+  upsert: RecipeUpsertWithoutVideoInput
+}
+
+input RecipeUpdateWithoutIngredientsDataInput {
+  description: NullableStringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  people: NullableStringFieldUpdateOperationsInput
+  video: VideoUpdateOneWithoutRecipeInput
+}
+
+input RecipeUpdateWithoutVideoDataInput {
+  description: NullableStringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  ingredients: IngredientUpdateManyWithoutRecipeInput
+  name: StringFieldUpdateOperationsInput
+  people: NullableStringFieldUpdateOperationsInput
+}
+
+input RecipeUpsertWithoutIngredientsInput {
+  create: RecipeCreateWithoutIngredientsInput!
+  update: RecipeUpdateWithoutIngredientsDataInput!
+}
+
+input RecipeUpsertWithoutVideoInput {
+  create: RecipeCreateWithoutVideoInput!
+  update: RecipeUpdateWithoutVideoDataInput!
+}
+
+input RecipeWhereInput {
+  AND: [RecipeWhereInput!]
+  description: StringNullableFilter
+  id: StringFilter
+  ingredients: IngredientListRelationFilter
+  name: StringFilter
+  NOT: [RecipeWhereInput!]
+  OR: [RecipeWhereInput!]
+  people: StringNullableFilter
+  video: VideoWhereInput
+  videoId: StringNullableFilter
+}
+
+input RecipeWhereUniqueInput {
+  id: String
 }
 
 type Resolution {
@@ -861,6 +1226,81 @@ input ResolutionWhereUniqueInput {
 enum SortOrder {
   asc
   desc
+}
+
+type Step {
+  id: String!
+  images(cursor: ImagenWhereUniqueInput, distinct: [ImagenDistinctFieldEnum!], orderBy: [ImagenOrderByInput!], skip: Int, take: Int, where: ImagenWhereInput): [Imagen!]
+  name: String!
+}
+
+input StepCreateInput {
+  id: String
+  images: ImagenCreateManyWithoutStepInput
+  name: String!
+}
+
+input StepCreateOneWithoutImagesInput {
+  connect: StepWhereUniqueInput
+  create: StepCreateWithoutImagesInput
+}
+
+input StepCreateWithoutImagesInput {
+  id: String
+  name: String!
+}
+
+enum StepDistinctFieldEnum {
+  id
+  name
+}
+
+input StepOrderByInput {
+  id: SortOrder
+  name: SortOrder
+}
+
+input StepUpdateInput {
+  id: StringFieldUpdateOperationsInput
+  images: ImagenUpdateManyWithoutStepInput
+  name: StringFieldUpdateOperationsInput
+}
+
+input StepUpdateManyMutationInput {
+  id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+}
+
+input StepUpdateOneWithoutImagesInput {
+  connect: StepWhereUniqueInput
+  create: StepCreateWithoutImagesInput
+  delete: Boolean
+  disconnect: Boolean
+  update: StepUpdateWithoutImagesDataInput
+  upsert: StepUpsertWithoutImagesInput
+}
+
+input StepUpdateWithoutImagesDataInput {
+  id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+}
+
+input StepUpsertWithoutImagesInput {
+  create: StepCreateWithoutImagesInput!
+  update: StepUpdateWithoutImagesDataInput!
+}
+
+input StepWhereInput {
+  AND: [StepWhereInput!]
+  id: StringFilter
+  images: ImagenListRelationFilter
+  name: StringFilter
+  NOT: [StepWhereInput!]
+  OR: [StepWhereInput!]
+}
+
+input StepWhereUniqueInput {
+  id: String
 }
 
 input StringFieldUpdateOperationsInput {
@@ -1040,6 +1480,7 @@ type Video {
   hls: Boolean!
   id: String!
   name: String!
+  Recipe: Recipe
 }
 
 type Video2 {
@@ -1101,6 +1542,19 @@ input VideoCreateInput {
   hls: Boolean
   id: String
   name: String!
+  Recipe: RecipeCreateOneWithoutVideoInput
+}
+
+input VideoCreateOneWithoutRecipeInput {
+  connect: VideoWhereUniqueInput
+  create: VideoCreateWithoutRecipeInput
+}
+
+input VideoCreateWithoutRecipeInput {
+  format: String!
+  hls: Boolean
+  id: String
+  name: String!
 }
 
 enum VideoDistinctFieldEnum {
@@ -1122,6 +1576,7 @@ input VideoUpdateInput {
   hls: BoolFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
+  Recipe: RecipeUpdateOneWithoutVideoInput
 }
 
 input VideoUpdateManyMutationInput {
@@ -1129,6 +1584,27 @@ input VideoUpdateManyMutationInput {
   hls: BoolFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
+}
+
+input VideoUpdateOneWithoutRecipeInput {
+  connect: VideoWhereUniqueInput
+  create: VideoCreateWithoutRecipeInput
+  delete: Boolean
+  disconnect: Boolean
+  update: VideoUpdateWithoutRecipeDataInput
+  upsert: VideoUpsertWithoutRecipeInput
+}
+
+input VideoUpdateWithoutRecipeDataInput {
+  format: StringFieldUpdateOperationsInput
+  hls: BoolFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+}
+
+input VideoUpsertWithoutRecipeInput {
+  create: VideoCreateWithoutRecipeInput!
+  update: VideoUpdateWithoutRecipeDataInput!
 }
 
 input VideoWhereInput {
@@ -1139,6 +1615,7 @@ input VideoWhereInput {
   name: StringFilter
   NOT: [VideoWhereInput!]
   OR: [VideoWhereInput!]
+  Recipe: RecipeWhereInput
 }
 
 input VideoWhereUniqueInput {

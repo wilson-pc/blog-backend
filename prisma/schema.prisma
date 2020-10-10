@@ -64,30 +64,59 @@ model Category {
 }
 
 model Video {
-  id    String @id @default(uuid())
-  name  String @unique
+  id     String  @id @default(uuid())
+  name   String  @unique
   format String
-  hls Boolean @default(false)
+  hls    Boolean @default(false)
 
+  Recipe Recipe?
 }
-model Imagen{
-   id    String @id @default(uuid())
-  name  String @unique
+
+model Imagen {
+  id     String @id @default(uuid())
+  name   String @unique
   format String
- 
+
+  Step   Step?   @relation(fields: [stepId], references: [id])
+  stepId String?
 }
-model Video2{
-   id    String @id @default(uuid())
-   name  String @unique
-  web Boolean @default(false)
+
+model Video2 {
+  id          String       @id @default(uuid())
+  name        String       @unique
+  web         Boolean      @default(false)
   resolutions Resolution[]
 
 }
 
-model Resolution{
-   id    String @id @default(uuid())
-   name  String @unique
-   videoId String
-   video Video2 @relation(fields: [videoId], references: [id])
+model Resolution {
+  id      String @id @default(uuid())
+  name    String @unique
+  videoId String
+  video   Video2 @relation(fields: [videoId], references: [id])
 
+}
+
+model Recipe {
+  id          String       @id @default(uuid())
+  name        String
+  people      String?
+  description String?
+  video       Video?       @relation(fields: [videoId], references: [id])
+  ingredients Ingredient[]
+  videoId     String?
+}
+
+model Ingredient {
+  id       String  @id @default(uuid())
+  name     String
+  Recipe   Recipe? @relation(fields: [recipeId], references: [id])
+  recipeId String?
+
+}
+
+model Step {
+  id     String   @id @default(uuid())
+  name   String
+  images Imagen[]
 }

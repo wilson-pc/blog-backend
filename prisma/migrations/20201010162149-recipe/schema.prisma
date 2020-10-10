@@ -1,0 +1,122 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "sqlite"
+  url = "***"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator typegraphql {
+  provider = "typegraphql-prisma"
+  output   = "../src/prisma/generated"
+}
+
+model User {
+  id       String    @id @default(uuid())
+  email    String    @unique
+  name     String
+  password String
+  comments Comment[]
+  posts    Post[]
+  profile  Profile?
+
+}
+
+model Profile {
+  id     String @id @default(uuid())
+  bio    String
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+}
+
+model Post {
+  id         String     @id @default(uuid())
+  createdAt  DateTime   @default(now())
+  title      String     @unique
+  content    String
+  published  Boolean    @default(false)
+  author     User       @relation(fields: [authorId], references: [id])
+  authorId   String
+  categories Category[] @relation(references: [id])
+  comments   Comment[]
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  message   String?
+  createdAt DateTime @default(now())
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id])
+  user      User?    @relation(fields: [userId], references: [id])
+
+  userId String?
+}
+
+model Category {
+  id    String @id @default(uuid())
+  name  String @unique
+  posts Post[] @relation(references: [id])
+
+}
+
+model Video {
+  id     String  @id @default(uuid())
+  name   String  @unique
+  format String
+  hls    Boolean @default(false)
+
+  Recipe Recipe?
+}
+
+model Imagen {
+  id     String @id @default(uuid())
+  name   String @unique
+  format String
+
+  Step   Step?   @relation(fields: [stepId], references: [id])
+  stepId String?
+}
+
+model Video2 {
+  id          String       @id @default(uuid())
+  name        String       @unique
+  web         Boolean      @default(false)
+  resolutions Resolution[]
+
+}
+
+model Resolution {
+  id      String @id @default(uuid())
+  name    String @unique
+  videoId String
+  video   Video2 @relation(fields: [videoId], references: [id])
+
+}
+
+model Recipe {
+  id          String       @id @default(uuid())
+  name        String
+  people      String
+  description String
+  video       Video?       @relation(fields: [videoId], references: [id])
+  ingredients Ingredient[]
+  videoId     String?
+}
+
+model Ingredient {
+  id       String  @id @default(uuid())
+  name     String
+  Recipe   Recipe? @relation(fields: [recipeId], references: [id])
+  recipeId String?
+
+}
+
+model Step {
+  id     String   @id @default(uuid())
+  name   String
+  images Imagen[]
+}

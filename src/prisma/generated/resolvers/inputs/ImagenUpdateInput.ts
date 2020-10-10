@@ -1,6 +1,7 @@
 import * as TypeGraphQL from "type-graphql";
 import GraphQLJSON from "graphql-type-json";
 import { JsonValue, InputJsonValue } from "@prisma/client";
+import { StepUpdateOneWithoutImagesInput } from "../inputs/StepUpdateOneWithoutImagesInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 
 @TypeGraphQL.InputType({
@@ -25,4 +26,10 @@ export class ImagenUpdateInput {
     description: undefined
   })
   format?: StringFieldUpdateOperationsInput | undefined;
+
+  @TypeGraphQL.Field(_type => StepUpdateOneWithoutImagesInput, {
+    nullable: true,
+    description: undefined
+  })
+  Step?: StepUpdateOneWithoutImagesInput | undefined;
 }

@@ -1,0 +1,9 @@
+export { AggregateIngredientArgs } from "./AggregateIngredientArgs";
+export { CreateIngredientArgs } from "./CreateIngredientArgs";
+export { DeleteIngredientArgs } from "./DeleteIngredientArgs";
+export { DeleteManyIngredientArgs } from "./DeleteManyIngredientArgs";
+export { FindManyIngredientArgs } from "./FindManyIngredientArgs";
+export { FindOneIngredientArgs } from "./FindOneIngredientArgs";
+export { UpdateIngredientArgs } from "./UpdateIngredientArgs";
+export { UpdateManyIngredientArgs } from "./UpdateManyIngredientArgs";
+export { UpsertIngredientArgs } from "./UpsertIngredientArgs";

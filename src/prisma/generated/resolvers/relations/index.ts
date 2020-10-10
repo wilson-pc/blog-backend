@@ -1,11 +1,18 @@
 export { CategoryRelationsResolver } from "./Category/CategoryRelationsResolver";
 export * from "./Category/args";
 export { CommentRelationsResolver } from "./Comment/CommentRelationsResolver";
+export { ImagenRelationsResolver } from "./Imagen/ImagenRelationsResolver";
+export { IngredientRelationsResolver } from "./Ingredient/IngredientRelationsResolver";
 export { PostRelationsResolver } from "./Post/PostRelationsResolver";
 export * from "./Post/args";
 export { ProfileRelationsResolver } from "./Profile/ProfileRelationsResolver";
+export { RecipeRelationsResolver } from "./Recipe/RecipeRelationsResolver";
+export * from "./Recipe/args";
 export { ResolutionRelationsResolver } from "./Resolution/ResolutionRelationsResolver";
+export { StepRelationsResolver } from "./Step/StepRelationsResolver";
+export * from "./Step/args";
 export { UserRelationsResolver } from "./User/UserRelationsResolver";
 export * from "./User/args";
+export { VideoRelationsResolver } from "./Video/VideoRelationsResolver";
 export { Video2RelationsResolver } from "./Video2/Video2RelationsResolver";
 export * from "./Video2/args";

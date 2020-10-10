@@ -1,0 +1,17 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "UpdateField",
+      "model": "Recipe",
+      "field": "people",
+      "arity": "Optional"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Recipe",
+      "field": "description",
+      "arity": "Optional"
+    }
+  ]
+}

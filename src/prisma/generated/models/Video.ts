@@ -1,6 +1,7 @@
 import * as TypeGraphQL from "type-graphql";
 import GraphQLJSON from "graphql-type-json";
 import { JsonValue, InputJsonValue } from "@prisma/client";
+import { Recipe } from "../models/Recipe";
 
 @TypeGraphQL.ObjectType({
   isAbstract: true,
@@ -30,4 +31,6 @@ export class Video {
     description: undefined,
   })
   hls!: boolean;
+
+  Recipe?: Recipe | null;
 }

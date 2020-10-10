@@ -14,6 +14,12 @@ import { CommentModule } from './comment/comment.module';
 import { MulterModule } from '@nestjs/platform-express/multer/multer.module';
 import {
   ImagenCrudResolver,
+  IngredientCrudResolver,
+  IngredientRelationsResolver,
+  RecipeCrudResolver,
+  RecipeRelationsResolver,
+  StepCrudResolver,
+  StepRelationsResolver,
   Video2CrudResolver,
   Video2RelationsResolver,
   VideoCrudResolver,
@@ -51,6 +57,12 @@ const prisma = new PrismaClient();
     Video2CrudResolver,
     ImagenCrudResolver,
     Video2RelationsResolver,
+    RecipeCrudResolver,
+    RecipeRelationsResolver,
+    IngredientCrudResolver,
+    IngredientRelationsResolver,
+    StepCrudResolver,
+    StepRelationsResolver,
   ],
 })
 export class AppModule {}

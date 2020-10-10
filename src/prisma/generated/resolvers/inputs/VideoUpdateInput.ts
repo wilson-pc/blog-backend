@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import GraphQLJSON from "graphql-type-json";
 import { JsonValue, InputJsonValue } from "@prisma/client";
 import { BoolFieldUpdateOperationsInput } from "../inputs/BoolFieldUpdateOperationsInput";
+import { RecipeUpdateOneWithoutVideoInput } from "../inputs/RecipeUpdateOneWithoutVideoInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 
 @TypeGraphQL.InputType({
@@ -32,4 +33,10 @@ export class VideoUpdateInput {
     description: undefined
   })
   hls?: BoolFieldUpdateOperationsInput | undefined;
+
+  @TypeGraphQL.Field(_type => RecipeUpdateOneWithoutVideoInput, {
+    nullable: true,
+    description: undefined
+  })
+  Recipe?: RecipeUpdateOneWithoutVideoInput | undefined;
 }

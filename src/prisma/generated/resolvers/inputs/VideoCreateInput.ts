@@ -1,6 +1,7 @@
 import * as TypeGraphQL from "type-graphql";
 import GraphQLJSON from "graphql-type-json";
 import { JsonValue, InputJsonValue } from "@prisma/client";
+import { RecipeCreateOneWithoutVideoInput } from "../inputs/RecipeCreateOneWithoutVideoInput";
 
 @TypeGraphQL.InputType({
   isAbstract: true,
@@ -30,4 +31,10 @@ export class VideoCreateInput {
     description: undefined
   })
   hls?: boolean | undefined;
+
+  @TypeGraphQL.Field(_type => RecipeCreateOneWithoutVideoInput, {
+    nullable: true,
+    description: undefined
+  })
+  Recipe?: RecipeCreateOneWithoutVideoInput | undefined;
 }

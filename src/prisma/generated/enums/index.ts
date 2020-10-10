@@ -1,10 +1,13 @@
 export { CategoryDistinctFieldEnum } from "./CategoryDistinctFieldEnum";
 export { CommentDistinctFieldEnum } from "./CommentDistinctFieldEnum";
 export { ImagenDistinctFieldEnum } from "./ImagenDistinctFieldEnum";
+export { IngredientDistinctFieldEnum } from "./IngredientDistinctFieldEnum";
 export { PostDistinctFieldEnum } from "./PostDistinctFieldEnum";
 export { ProfileDistinctFieldEnum } from "./ProfileDistinctFieldEnum";
+export { RecipeDistinctFieldEnum } from "./RecipeDistinctFieldEnum";
 export { ResolutionDistinctFieldEnum } from "./ResolutionDistinctFieldEnum";
 export { SortOrder } from "./SortOrder";
+export { StepDistinctFieldEnum } from "./StepDistinctFieldEnum";
 export { UserDistinctFieldEnum } from "./UserDistinctFieldEnum";
 export { Video2DistinctFieldEnum } from "./Video2DistinctFieldEnum";
 export { VideoDistinctFieldEnum } from "./VideoDistinctFieldEnum";

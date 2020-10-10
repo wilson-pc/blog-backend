@@ -25,4 +25,10 @@ export class ImagenOrderByInput {
     description: undefined
   })
   format?: typeof SortOrder[keyof typeof SortOrder] | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true,
+    description: undefined
+  })
+  stepId?: typeof SortOrder[keyof typeof SortOrder] | undefined;
 }

@@ -1,0 +1,9 @@
+export { AggregateRecipeArgs } from "./AggregateRecipeArgs";
+export { CreateRecipeArgs } from "./CreateRecipeArgs";
+export { DeleteManyRecipeArgs } from "./DeleteManyRecipeArgs";
+export { DeleteRecipeArgs } from "./DeleteRecipeArgs";
+export { FindManyRecipeArgs } from "./FindManyRecipeArgs";
+export { FindOneRecipeArgs } from "./FindOneRecipeArgs";
+export { UpdateManyRecipeArgs } from "./UpdateManyRecipeArgs";
+export { UpdateRecipeArgs } from "./UpdateRecipeArgs";
+export { UpsertRecipeArgs } from "./UpsertRecipeArgs";

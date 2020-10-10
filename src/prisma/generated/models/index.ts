@@ -1,9 +1,12 @@
 export { Category } from "./Category";
 export { Comment } from "./Comment";
 export { Imagen } from "./Imagen";
+export { Ingredient } from "./Ingredient";
 export { Post } from "./Post";
 export { Profile } from "./Profile";
+export { Recipe } from "./Recipe";
 export { Resolution } from "./Resolution";
+export { Step } from "./Step";
 export { User } from "./User";
 export { Video } from "./Video";
 export { Video2 } from "./Video2";
